@@ -15,11 +15,26 @@ const PizzaSchema = new Schema({
         type: String,
         default: 'Large'
     },
-    toppings: []
-});
+    toppings: [
+
+    ],
+
+    Comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }]
+},
+{
+    toJSON: {
+        virtuals: true,
+    },
+    id: false
+}
+
+);
 
 //create Pizza model using PizzaSchema
 const Pizza = model('Pizza', PizzaSchema);
 
 //export the Pizza model
-module.exports = Pizza;
+module.exports = {Pizza};
